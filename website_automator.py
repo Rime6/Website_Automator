@@ -2,8 +2,8 @@ import sys
 import webbrowser
 
 URLS = {
-    "work": ["https://mail.google.com/mail/u/0/#inbox", "https://docs.google.com/document/u/0/"],
-    "personal": ["https://docs.google.com/document/u/1/", "https://www.youtube.com"]
+    "work": ["https://mail.google.com/mail/u/0/#inbox", "https://docs.google.com/document/u/0/", "https://login.microsoftonline.com", "https://docs.google.com/spreadsheets/u/0/", "https://www.youtube.com/watch?v=FxJ3zPUU6Y4"],
+    "personal": ["https://docs.google.com/document/u/1/", "https://www.youtube.com", "https://www.netflix.com/browse"]
 }
 
 def open_webpages(urls):
@@ -19,21 +19,21 @@ if __name__ == "__main__":
     input_user = input("Please enter the set you would like: ")
     if input_user.lower() == "work":
         open_webpages(URLS["work"])
-    if input_user.lower() == "personal":
+    elif input_user.lower() == "personal":
         open_webpages(URLS["personal"])
-    else:
-        while input_user != "personal" or "work":
-            printing = print("That is not an available set")
-            print(printing)
-            input_user = input("Please enter the set you would like: ")
-            if input_user.lower() == "work":
-                open_webpages(URLS["work"])
-                break
-            if input_user.lower() == "personal":
-                open_webpages(URLS["personal"])
-                break
-            else:
-                continue
+    else: 
+        if input_user != "personal" or "work":
+            while input_user != "personal" or "work":
+                print("That is not an available set")
+                input_user = input("Please enter the set you would like: ")
+                if input_user.lower() == "work":
+                    open_webpages(URLS["work"])
+                    break
+                elif input_user.lower() == "personal":
+                    open_webpages(URLS["personal"])
+                    break
+                else:
+                    continue
 
 
-        sys.exit(1)
+    sys.exit(1)
